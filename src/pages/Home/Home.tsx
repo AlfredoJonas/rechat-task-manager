@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateTaskForm from './components/createTaskForm/createTaskForm';
 import './Home.css';
 
 function Home() {
@@ -6,9 +7,10 @@ function Home() {
     <div className="App">
       <header className="App-header">
         <p>
-          Rechat <code>coding/hiring</code> assessment.
+          Add a new Task
         </p>
       </header>
+      <CreateTaskForm />
     </div>
   );
 }

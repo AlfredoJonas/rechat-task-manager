@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    form {
+        width: 80%;
+    }
+}
+
+.item {
+    padding: 1vh 0;
+}
+
+.item, .item input, .item textarea {
+    width: 100%;
+}
+
+.item input, .item textarea {
+    background-color: #e9eaeb;
+    min-height: 6vh;
+    border: 0;
+    border-bottom: 2px solid #c1c2c3;
+}
+
+.item input::placeholder, .item textarea::placeholder {
+    padding: 5px 10px;
+}
+
+.item textarea {
+    height: 15vh;
+    resize: none;
+}
