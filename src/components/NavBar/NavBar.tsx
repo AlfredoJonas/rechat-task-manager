@@ -10,7 +10,7 @@ function NavBar() {
     if (location.pathname === "/") {
       navigate("/home");
     }
-  }, [location, navigate]);
+  }, [location.pathname, navigate]);
 
   return (
     <>

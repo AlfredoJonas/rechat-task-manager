@@ -1,11 +1,12 @@
 .navbar {
     min-width: 10vw;
-    height: 5vh;
+    height: 8vh;
     padding-left: 10vw;
     background-color: #1775b9;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    font-size: 20px;
     font-weight: 500;
     color: white;
 }
