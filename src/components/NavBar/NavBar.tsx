@@ -1,9 +1,17 @@
-import React from 'react';
-import { useLocation, Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, Outlet, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/home");
+    }
+  }, [location, navigate]);
+
   return (
     <>
       <div className='navbar'>
