@@ -1,10 +1,19 @@
 import React from 'react';
 import './Button.css';
 
-function Button() {
+interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  text: string;
+  width?: string;
+  icon?: React.SVGProps<SVGSVGElement>;
+}
+
+function Button({ text, width, icon, ...rest }: ButtonProps): JSX.Element {
   return (
-    <button>
-      I'm a button
+    <button style={{ width }} {...rest}>
+      <>
+        {icon}
+        {text}
+      </>
     </button>
   );
 }
