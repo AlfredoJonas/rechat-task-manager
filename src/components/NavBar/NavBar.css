@@ -1,0 +1,15 @@
+.navbar {
+    min-width: 10vw;
+    height: 5vh;
+    padding-left: 10vw;
+    background-color: #1775b9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 500;
+    color: white;
+}
+
+.navbar-arrow {
+    padding-left: 1%;
+}
