@@ -119,6 +119,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
           value={title}
           onChange={onTextChange}
           style={{ borderBottom: '1px solid ' + (isUpdate ? '#4685c1' : '#c1c2c3')}}
+          maxLength={30}
           />
         </div>
         <div className='item'>
@@ -128,6 +129,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
             value={description}
             onChange={onDescriptionChange}
             style={{ height: textAreaHeight || '10vh' }}
+            maxLength={500}
           />
         </div>
 

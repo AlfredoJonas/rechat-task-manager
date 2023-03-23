@@ -8,7 +8,7 @@ function TaskItem({id: taskId, title, description, status}: TaskItemInterface) {
   return (
     <div className='task-item'>
       <div className='task-item-body'>
-        <span className='secondary-text' style={{ fontSize: '15px'}}>{title}</span>
+        <span className='secondary-text title-text'>{title}</span>
         <div>
           <span className='tertiary-text description-text'>{description}</span>
         </div>
