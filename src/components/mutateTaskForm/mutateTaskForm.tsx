@@ -61,13 +61,14 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
             ...task,
             title,
             description,
-            status
+            status,
+            oldStatus: task?.status,
           }
         }
       });
       cleanStates();
+      navigate("/home");
     }
-    navigate("/home");
   }
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -91,6 +92,12 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
     setTitle("");
     setDescription("");
     setStatus("");
+  };
+  const filterStatusesBasedOnRules = () => {
+    // Find status object with real task
+    const currentStatus = statuses.find((s) => s.name === task?.status) || {id: -1};
+    // Filter based on the stablished rules or ids
+    return statuses.filter((s) => s.rules.includes(currentStatus.id) || s.id === currentStatus.id);
   };
 
   return (
@@ -132,7 +139,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
               onChange={onStatusChange}
               style={{ borderBottom: '1px solid ' + (isUpdate ? '#4685c1' : '#c1c2c3')}}
             >
-              {statuses.map(function(s) { 
+              {filterStatusesBasedOnRules().map(function(s) { 
                   return (<option key={s.id} value={s.name}>{s.name}</option>);
               })}
             </select>

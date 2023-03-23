@@ -29,38 +29,38 @@ export const TasksContext = createContext<TaskContextType>({} as TaskContextType
 export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: any };
 export const TasksDispatchContext = createContext((() => {}) as Dispatch<Action>);
 
-const initialState = {
+export const initialState = {
 	taskList: [],
 	statuses: [
 		{
 			id: 0,
 			name: "ToDo",
-			rules: []
+			rules: [1, 3]
 		},
 		{
 			id: 1,
 			name: "Blocked",
-			rules: []
+			rules: [2]
 		},
 		{
 			id: 2,
 			name: "InProgress",
-			rules: []
+			rules: [0]
 		},
 		{
 			id: 3,
 			name: "InQA",
-			rules: []
+			rules: [2]
 		},
 		{
 			id: 4,
 			name: "Done",
-			rules: []
+			rules: [3]
 		},
 		{
 			id: 5,
 			name: "Deployed",
-			rules: []
+			rules: [4]
 		},
 	],
 };
@@ -91,7 +91,6 @@ const reducer = (state: any, action: any) => {
 				}
 				return task;
 			});
-			console.log(newTaskList, newTaskToUpdate, currentTaskList);
 			return {
 				...state,
 				taskList: newTaskList
@@ -103,7 +102,7 @@ const reducer = (state: any, action: any) => {
 };
 
 // Defines it to use it directly on the main App and render each JSX component
-export default function TaskAppProvider({ children }: {children: JSX.Element}) {
+export default function TaskAppProvider({ children, initialStateAux= {} as TaskContextType}: {children: JSX.Element, initialStateAux?: TaskContextType}) {
 	const [tasks, dispatch] = useReducer(reducer, initialState);
 	return (
 		<TasksContext.Provider value={tasks}>
