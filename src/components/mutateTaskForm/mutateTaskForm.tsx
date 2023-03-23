@@ -6,10 +6,10 @@ import './mutateTaskForm.css';
 import { useNavigate } from 'react-router';
 
 interface TaskFormType {
-  isUpdate?: boolean;
+  isUpdate: boolean;
   headerTitle: string;
   textAreaHeight?: string;
-  task?: TaskItemInterface;
+  task: TaskItemInterface;
 }
 
 function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: TaskFormType) {
@@ -43,6 +43,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
         type: 'NEW_TASK',
         payload: {
           task: {
+            id: 0,
             title,
             description,
             status: statuses[0].name

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTaskState } from '../../../../context/Task';
+import { TaskItemInterface, useTaskState } from '../../../../context/Task';
 import EmptyList from './components/emptyList/EmptyList';
 import TaskItem from './components/taskItem/TaskItem';
 import './TaskList.css';
@@ -20,7 +20,7 @@ function TaskList() {
           {taskList?.length > 0 ? (
             <div className='list-body-grid'>
               {/* If there is no tasks we just render an empty message */}
-              {taskList?.map((task: any) => (<TaskItem key={task.id} {...task} />))}
+              {taskList?.map((task: TaskItemInterface) => (<TaskItem key={task.id} {...task} />))}
             </div>
           ) : <EmptyList />}
         </div>

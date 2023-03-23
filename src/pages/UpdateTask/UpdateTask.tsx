@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import MutateTaskForm from "../../components/mutateTaskForm/mutateTaskForm";
-import { useTaskState } from "../../context/Task";
+import { TaskItemInterface, useTaskState } from "../../context/Task";
 import "./UpdateTask.css";
 
 const UpdateTask = () => {
@@ -8,7 +8,7 @@ const UpdateTask = () => {
     
     // Global task context definitions
     const { taskList } = useTaskState();
-    const task = taskList.find((taskItem) => taskItem.id.toString() === taskId);
+    const task = taskList.find((taskItem: TaskItemInterface) => taskItem?.id.toString() === taskId) || {} as TaskItemInterface;
     return (
         <div className="update-task">
             <MutateTaskForm headerTitle='Edit Task' textAreaHeight="60vh" isUpdate={true} task={task} />

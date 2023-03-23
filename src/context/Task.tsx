@@ -8,6 +8,7 @@ export interface TaskItemInterface {
 	title: string;
 	description: string;
 	status: string;
+	oldStatus?: string;
 }
 
 interface TaskStatusesInterface {
@@ -24,7 +25,7 @@ export interface TaskContextType {
 
 export const TasksContext = createContext<TaskContextType>({} as TaskContextType);
 
-export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: any };
+export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: { task: TaskItemInterface }};
 export const TasksDispatchContext = createContext((() => {}) as Dispatch<Action>);
 
 const statuses = [
@@ -65,7 +66,7 @@ export const initialState = {
 	statuses: statuses,
 };
 
-const reducer = (state: any, action: any) => {
+const reducer = (state: TaskContextType, action: Action) => {
 	switch (action.type) {
 		case 'NEW_TASK':
 			const {
@@ -73,8 +74,8 @@ const reducer = (state: any, action: any) => {
 			} = action;
 			const { taskList: currentList } = state;
 			currentList.push({
-				id: currentList.length + 1,
-				...newTask
+				...newTask,
+				id: currentList.length + 1
 			});
 			return {
 				...state,
@@ -85,7 +86,7 @@ const reducer = (state: any, action: any) => {
 				payload: { task: newTaskToUpdate, task: { id: taskId } },
 			} = action;
 			const { taskList: currentTaskList } = state;
-			const newTaskList = currentTaskList.map((task: any) => {
+			const newTaskList = currentTaskList.map((task: TaskItemInterface) => {
 				if (task.id === taskId) {
 					return newTaskToUpdate;
 				}
