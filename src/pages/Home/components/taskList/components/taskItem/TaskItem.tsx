@@ -14,7 +14,7 @@ function TaskItem({id: taskId, title, description, status}: TaskItemInterface) {
         </div>
         <div className='bottom-item'>
           <div className='primary-text primary-bg-color label-bottom-item'>{status}</div>
-          <Link to={"/edit/"+taskId}>
+          <Link to={"/edit/"+taskId} data-testid={"task-icon-"+taskId}>
             <PenEdiPencilIcon />
           </Link>
         </div>

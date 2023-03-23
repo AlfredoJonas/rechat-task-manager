@@ -10,17 +10,15 @@ export interface TaskItemInterface {
 	status: string;
 }
 
-type StatusesType = "ToDo" | "Blocked" | "InProgress" | "InQA" | "Done" | "Deployed";
-
 interface TaskStatusesInterface {
 	id: number;
-	name: StatusesType;
-	rules: Array<number>;
+	name: string;
+	rules: number[];
 }
 
 export interface TaskContextType {
-	taskList: Array<TaskItemInterface>;
-	statuses: Array<TaskStatusesInterface>;
+	taskList: TaskItemInterface[];
+	statuses: TaskStatusesInterface[];
 }
 
 
@@ -29,40 +27,42 @@ export const TasksContext = createContext<TaskContextType>({} as TaskContextType
 export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: any };
 export const TasksDispatchContext = createContext((() => {}) as Dispatch<Action>);
 
+const statuses = [
+	{
+		id: 0,
+		name: "ToDo",
+		rules: [1, 3]
+	},
+	{
+		id: 1,
+		name: "Blocked",
+		rules: [2]
+	},
+	{
+		id: 2,
+		name: "InProgress",
+		rules: [0]
+	},
+	{
+		id: 3,
+		name: "InQA",
+		rules: [2]
+	},
+	{
+		id: 4,
+		name: "Done",
+		rules: [3]
+	},
+	{
+		id: 5,
+		name: "Deployed",
+		rules: [4]
+	},
+];
+
 export const initialState = {
 	taskList: [],
-	statuses: [
-		{
-			id: 0,
-			name: "ToDo",
-			rules: [1, 3]
-		},
-		{
-			id: 1,
-			name: "Blocked",
-			rules: [2]
-		},
-		{
-			id: 2,
-			name: "InProgress",
-			rules: [0]
-		},
-		{
-			id: 3,
-			name: "InQA",
-			rules: [2]
-		},
-		{
-			id: 4,
-			name: "Done",
-			rules: [3]
-		},
-		{
-			id: 5,
-			name: "Deployed",
-			rules: [4]
-		},
-	],
+	statuses: statuses,
 };
 
 const reducer = (state: any, action: any) => {
@@ -102,8 +102,8 @@ const reducer = (state: any, action: any) => {
 };
 
 // Defines it to use it directly on the main App and render each JSX component
-export default function TaskAppProvider({ children, initialStateAux= {} as TaskContextType}: {children: JSX.Element, initialStateAux?: TaskContextType}) {
-	const [tasks, dispatch] = useReducer(reducer, initialState);
+export default function TaskAppProvider({ children, initialStateAux=null}: {children: JSX.Element, initialStateAux?: TaskContextType | null}) {
+	const [tasks, dispatch] = useReducer(reducer, initialStateAux || initialState);
 	return (
 		<TasksContext.Provider value={tasks}>
 			<TasksDispatchContext.Provider value={dispatch}>

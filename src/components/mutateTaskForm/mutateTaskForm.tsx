@@ -135,6 +135,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
           <div className='item'>
             <select
               name="select"
+              data-testid="statusDropdown"
               value={status}
               onChange={onStatusChange}
               style={{ borderBottom: '1px solid ' + (isUpdate ? '#4685c1' : '#c1c2c3')}}
@@ -149,6 +150,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
           <div className='button-group' style={{ paddingTop: '0px' }}>
             <Button
               text="Edit"
+              data-testid="submit-button"
               type='submit'
               style={{width: '40%'}}
               icon={(<PenEdiPencilIcon width={10} height={10} fill="white" />)}
