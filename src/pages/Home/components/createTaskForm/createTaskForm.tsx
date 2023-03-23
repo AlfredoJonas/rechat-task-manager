@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import Button from '../../../../components/Button/Button';
+import { useTaskDispatch, useTaskState } from '../../../../context/Task';
 import { PlusArrow } from '../../../../Icons';
 import './CreateTaskForm.css';
 
 function CreateTaskForm() {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+
+  const { statuses } = useTaskState();
+  const taskDispatch = useTaskDispatch();
 
   const onTextChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setTitle(e.currentTarget.value);
@@ -19,9 +23,20 @@ function CreateTaskForm() {
     <form
       onSubmit={(e: React.SyntheticEvent) => {
         e.preventDefault();
-        console.info(title, description);
-        setTitle("");
-        setDescription("");
+        if (title !== '' && description !== '') {
+          taskDispatch({
+            type: 'NEW_TASK',
+            payload: {
+              task: {
+                title,
+                description,
+                status: statuses[0].name
+              }
+            }
+          });
+          setTitle("");
+          setDescription("");
+        }
       }}
     >
       <div className='item'>
@@ -30,7 +45,7 @@ function CreateTaskForm() {
       <div className='item'>
         <textarea name="description" placeholder='Description' value={description} onChange={onDescriptionChange} />
       </div>
-      <div className='item' style={{ paddingTop: '0px'}}>
+      <div className='item' style={{ paddingTop: '0px' }}>
         <Button text="Add" type='submit' width='100%' icon={(<PlusArrow fill="white" />)} />
       </div>
     </form>

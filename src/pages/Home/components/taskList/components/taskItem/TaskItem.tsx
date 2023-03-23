@@ -1,13 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TaskItemInterface } from '../../../../../../context/Task';
 import { PenEdiPencilIcon } from '../../../../../../Icons';
 import './TaskItem.css';
-
-interface TaskItemInterface {
-  title: string;
-  description: string;
-  status: string;
-}
 
 function TaskItem({title, description, status}: TaskItemInterface) {
   return (

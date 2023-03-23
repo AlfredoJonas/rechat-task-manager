@@ -20,11 +20,14 @@ div.list-body {
     max-height: 60vh;
     margin-top: -45px;
     overflow-y: auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+div.list-body-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-gap: 20px;
-    padding: 20px;
-    border-radius: 30px;
 }
 
 div.list-body::-webkit-scrollbar {
