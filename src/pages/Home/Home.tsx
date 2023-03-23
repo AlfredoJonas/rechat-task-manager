@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateTaskForm from './components/createTaskForm/CreateTaskForm';
+import CreateTaskForm from './components/createTaskForm/createTaskForm';
 import TaskList from './components/taskList/TaskList';
 import './Home.css';
 
