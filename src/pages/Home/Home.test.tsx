@@ -32,4 +32,7 @@ test('Check render and simplest form behavior for adding a new task', async () =
   });
   expect(titleInput).toHaveValue("");
   expect(desInput).toHaveValue("");
+
+  const taskCard = screen.getByText(titleText);
+  expect(taskCard).toBeInTheDocument();
 });
