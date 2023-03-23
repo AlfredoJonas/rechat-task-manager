@@ -5,12 +5,3 @@
   justify-content: center;
 }
 
-.home-header {
-  width: 50%;
-}
-
-@media (max-width: 768px) {
-  .home-header {
-      width: 80%;
-  }
-}

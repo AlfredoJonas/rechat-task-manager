@@ -6,6 +6,8 @@ function NavBar() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // For an empty URL and to avoid rendering an empty 
+  // navbar we will redirect always to the home page
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/home");
@@ -21,6 +23,7 @@ function NavBar() {
           {location.pathname.split("/")[1]}
         </span>
       </div>
+      {/* Outlet helps to render child routes */}
       <Outlet />
     </>
   );

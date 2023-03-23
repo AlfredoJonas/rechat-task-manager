@@ -16,8 +16,8 @@ div.list-header-radius {
 }
 
 div.list-body {
-    min-height: 40vh;
-    max-height: 60vh;
+    min-height: 60vh;
+    max-height: 80vh;
     margin-top: -45px;
     overflow-y: auto;
     padding: 20px;
@@ -42,4 +42,14 @@ div.list-body::-webkit-scrollbar-thumb {
 }
 div.list-body::-webkit-scrollbar-thumb:hover {
     background: #040707;
+}
+
+.home-header {
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .home-header {
+        width: 80%;
+    }
 }

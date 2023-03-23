@@ -6,11 +6,6 @@ import './Home.css';
 function Home() {
   return (
     <div className="home">
-      <header className="home-header secondary-text">
-        <p>
-          Add a new Task
-        </p>
-      </header>
       <CreateTaskForm />
       <TaskList />
     </div>

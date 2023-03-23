@@ -1,5 +1,8 @@
 import { createContext, Dispatch, useContext, useReducer } from 'react';
 
+// Define all the interfaces and types neccessary for build context and reducers
+// those will be also used on the functional components as props types
+
 export interface TaskItemInterface {
 	id: number;
 	title: string;
@@ -20,11 +23,11 @@ export interface TaskContextType {
 	statuses: Array<TaskStatusesInterface>;
 }
 
-export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: any };
 
 export const TasksContext = createContext<TaskContextType>({} as TaskContextType);
 
-export const TasksDispatchContext = createContext((() => {return ()=>{}}) as Dispatch<Action>);
+export type Action = { type: "NEW_TASK" | "UPDATE_TASK"; payload: any };
+export const TasksDispatchContext = createContext((() => {}) as Dispatch<Action>);
 
 const initialState = {
 	taskList: [],
@@ -78,20 +81,11 @@ const reducer = (state: any, action: any) => {
 				taskList: currentList,
 			};
 		case 'UPDATE_TASK':
-			const {
-				payload: { task: newTaskToUpdate, task: { id: taskId } },
-			} = action;
-			const { taskList: currentTaskList } = state;
-			const newTaskList = currentTaskList.map((task: any) => {
-				if (task.id !== taskId) {
-					return newTaskToUpdate;
-				}
-				return task;
-			});
+			const { taskList } = state;
 
 			return {
 				...state,
-				taskList: newTaskList
+				taskList
 			};
 		default: {
 			throw new Error(`Unhandled action type: ${action.type}`);
@@ -99,6 +93,7 @@ const reducer = (state: any, action: any) => {
 	}
 };
 
+// Defines it to use it directly on the main App and render each JSX component
 export default function TaskAppProvider({ children }: {children: JSX.Element}) {
 	const [tasks, dispatch] = useReducer(reducer, initialState);
 	return (
@@ -110,7 +105,7 @@ export default function TaskAppProvider({ children }: {children: JSX.Element}) {
 	);
 }
 
-export const useTaskState = () => {
+export const useTaskState = () : TaskContextType => {
 	const context = useContext(TasksContext);
 	if (context === undefined) {
 		throw new Error('useTaskState must be used within a TaskAppProvider');
@@ -118,7 +113,7 @@ export const useTaskState = () => {
 	return context;
 };
 
-export const useTaskDispatch = () => {
+export const useTaskDispatch = (): Dispatch<Action> => {
 	const context = useContext(TasksDispatchContext);
 	if (context === undefined) {
 		throw new Error('useTaskDispatch must be used within a TaskAppProvider');

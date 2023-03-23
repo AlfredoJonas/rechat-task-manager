@@ -5,7 +5,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   text: string;
   width?: string;
   icon?: React.SVGProps<SVGSVGElement>;
-}
+};
 
 function Button({ text, width, icon, ...rest }: ButtonProps): JSX.Element {
   return (

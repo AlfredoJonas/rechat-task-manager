@@ -9,6 +9,10 @@ test('Check render and simplest form behavior for adding a new task', async () =
   const addElements = screen.getAllByText(/Add/i);
   expect(addElements).toHaveLength(2);
 
+  // Check that there is no card related data rendered
+  expect(screen.queryByText(/ToDo/i)).not.toBeInTheDocument();
+
+  // Check behavior of title input
   const titleText = "Build home page";
   const titleInput = screen.getByPlaceholderText("Title");
   // eslint-disable-next-line testing-library/no-unnecessary-act
@@ -17,7 +21,7 @@ test('Check render and simplest form behavior for adding a new task', async () =
   });
   expect(titleInput).toHaveValue(titleText);
 
-  
+  // Check behavior of description text area
   const desText = "do the building of the home page";
   const desInput = screen.getByPlaceholderText("Description");
   // eslint-disable-next-line testing-library/no-unnecessary-act
@@ -30,9 +34,12 @@ test('Check render and simplest form behavior for adding a new task', async () =
   act(() => {
     userEvent.click(addElements[1]);
   });
+
+  // After click it should empty the fields
   expect(titleInput).toHaveValue("");
   expect(desInput).toHaveValue("");
 
-  const taskCard = screen.getByText(titleText);
+  // AND it should to add the new task to the context list and render it OK
+  const taskCard = screen.getByText(/ToDo/i);
   expect(taskCard).toBeInTheDocument();
 });
