@@ -14,10 +14,10 @@ function NavBar() {
 
   return (
     <>
-      <div className='navbar'>
-        <span>Task Manager</span>
-        <span className='navbar-arrow'>&gt;</span>
-        <span className='navbar-arrow'>
+      <div className='nav-bar primary-bg-color primary-text'>
+        <span>Task Management</span>
+        <span className='nav-bar-arrow'>&gt;</span>
+        <span className='nav-bar-arrow'>
           {location.pathname.split("/")[1]}
         </span>
       </div>

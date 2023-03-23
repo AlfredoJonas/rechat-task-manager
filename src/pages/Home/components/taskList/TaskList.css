@@ -1,0 +1,42 @@
+ div.task-list {
+    width: 100%;
+    margin-top: 2vh;
+ }
+ 
+ div.list-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 70px;
+    padding-left: 10vw;
+ }
+
+div.list-header-radius {
+    border-radius: 30px;
+}
+
+div.list-body {
+    min-height: 40vh;
+    max-height: 60vh;
+    margin-top: -45px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+div.list-body::-webkit-scrollbar {
+    width: 10px;
+}
+div.list-body::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+div.list-body::-webkit-scrollbar-thumb {
+    background: #040707; 
+    border-radius: 10px;
+}
+div.list-body::-webkit-scrollbar-thumb:hover {
+    background: #040707;
+}

@@ -9,7 +9,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 
 function Button({ text, width, icon, ...rest }: ButtonProps): JSX.Element {
   return (
-    <button style={{ width }} {...rest}>
+    <button style={{ width }} {...rest} className='primary-bg-color'>
       <>
         {icon}
         {text}

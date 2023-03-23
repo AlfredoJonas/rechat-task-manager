@@ -1,16 +1,18 @@
 import React from 'react';
-import CreateTaskForm from './components/createTaskForm/createTaskForm';
+import CreateTaskForm from './components/createTaskForm/CreateTaskForm';
+import TaskList from './components/taskList/TaskList';
 import './Home.css';
 
 function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="home">
+      <header className="home-header secondary-text">
         <p>
           Add a new Task
         </p>
       </header>
       <CreateTaskForm />
+      <TaskList />
     </div>
   );
 }

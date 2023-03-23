@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.primary-color{
+  color: #1775b9;
+}
+
+.primary-bg-color{
+  background-color: #1775b9;
+}
+
+.secondary-bg-color{
+  background-color: #a2ceed;
+}
+
+.primary-text{
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+.secondary-text{
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+
+.tertiary-text {
+  font-weight: normal;
+  color: #7c7d7d;
+  font-size: 10px;
+}
+
+.text-center {
+  text-align: center;
+}

@@ -1,19 +1,16 @@
-.App {
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.App-header {
-  font-weight: bold;
-  color: black;
+.home-header {
   width: 50%;
-  font-size: 18px;
 }
 
 @media (max-width: 768px) {
-  .App-header {
+  .home-header {
       width: 80%;
   }
 }

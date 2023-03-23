@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../../../../components/Button/Button';
 import { PlusArrow } from '../../../../Icons';
-import './createTaskForm.css';
+import './CreateTaskForm.css';
 
 function CreateTaskForm() {
   const [title, setTitle] = useState<string>("");
@@ -30,7 +30,7 @@ function CreateTaskForm() {
       <div className='item'>
         <textarea name="description" placeholder='Description' value={description} onChange={onDescriptionChange} />
       </div>
-      <div className='item'>
+      <div className='item' style={{ paddingTop: '0px'}}>
         <Button text="Add" type='submit' width='100%' icon={(<PlusArrow fill="white" />)} />
       </div>
     </form>

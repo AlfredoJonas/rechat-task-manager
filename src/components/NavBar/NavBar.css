@@ -1,16 +1,13 @@
-.navbar {
+.nav-bar {
     min-width: 10vw;
-    height: 8vh;
+    min-height: 50px;
     padding-left: 10vw;
-    background-color: #1775b9;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 20px;
-    font-weight: 500;
-    color: white;
+    text-transform: capitalize;
 }
 
-.navbar-arrow {
+.nav-bar-arrow {
     padding-left: 1%;
 }

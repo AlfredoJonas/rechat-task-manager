@@ -11,7 +11,7 @@ const SvgPlusArrow = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path {...props} d="M28 14H18V4a2 2 0 0 0-4 0v10H4a2 2 0 0 0 0 4h10v10a2 2 0 0 0 4 0V18h10a2 2 0 0 0 0-4z" />
+    <path d="M28 14H18V4a2 2 0 0 0-4 0v10H4a2 2 0 0 0 0 4h10v10a2 2 0 0 0 4 0V18h10a2 2 0 0 0 0-4z" />
   </svg>
 );
 export default SvgPlusArrow;
