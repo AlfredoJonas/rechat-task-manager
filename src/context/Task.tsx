@@ -81,11 +81,20 @@ const reducer = (state: any, action: any) => {
 				taskList: currentList,
 			};
 		case 'UPDATE_TASK':
-			const { taskList } = state;
-
+			const {
+				payload: { task: newTaskToUpdate, task: { id: taskId } },
+			} = action;
+			const { taskList: currentTaskList } = state;
+			const newTaskList = currentTaskList.map((task: any) => {
+				if (task.id === taskId) {
+					return newTaskToUpdate;
+				}
+				return task;
+			});
+			console.log(newTaskList, newTaskToUpdate, currentTaskList);
 			return {
 				...state,
-				taskList
+				taskList: newTaskList
 			};
 		default: {
 			throw new Error(`Unhandled action type: ${action.type}`);

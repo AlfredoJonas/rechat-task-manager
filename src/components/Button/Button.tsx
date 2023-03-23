@@ -3,13 +3,15 @@ import './Button.css';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   text: string;
+  style: {[key: string]: string};
   width?: string;
+  backgroundColor?: string;
   icon?: React.SVGProps<SVGSVGElement>;
 };
 
-function Button({ text, width, icon, ...rest }: ButtonProps): JSX.Element {
+function Button({ text, style, icon, ...rest }: ButtonProps): JSX.Element {
   return (
-    <button style={{ width }} {...rest} className='primary-bg-color'>
+    <button style={style} {...rest} className='primary-bg-color'>
       <>
         {icon}
         {text}

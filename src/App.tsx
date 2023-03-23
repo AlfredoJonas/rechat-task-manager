@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import NavBar from './components/NavBar/NavBar';
 import TaskAppProvider from './context/Task';
+import UpdateTask from './pages/UpdateTask/UpdateTask';
 
 // In this way we inject the Task Context Provider to the routes we need to
 const BaseRoute = (Element: () => JSX.Element) => (
@@ -18,6 +19,7 @@ export const App = () => (
     <Routes>
       <Route path='/' element={<NavBar />}>
         <Route index path='home' element={BaseRoute(Home)} />
+        <Route index path='edit/:taskId' element={BaseRoute(UpdateTask)} />
       </Route>
       <Route path='*' element={<Navigate to='/home' />} />
     </Routes>

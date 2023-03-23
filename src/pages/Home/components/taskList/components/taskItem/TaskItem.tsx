@@ -4,7 +4,7 @@ import { TaskItemInterface } from '../../../../../../context/Task';
 import { PenEdiPencilIcon } from '../../../../../../Icons';
 import './TaskItem.css';
 
-function TaskItem({title, description, status}: TaskItemInterface) {
+function TaskItem({id: taskId, title, description, status}: TaskItemInterface) {
   return (
     <div className='task-item'>
       <div className='task-item-body'>
@@ -14,7 +14,7 @@ function TaskItem({title, description, status}: TaskItemInterface) {
         </div>
         <div className='bottom-item'>
           <div className='primary-text primary-bg-color label-bottom-item'>{status}</div>
-          <Link to="/edit">
+          <Link to={"/edit/"+taskId}>
             <PenEdiPencilIcon />
           </Link>
         </div>

@@ -1,12 +1,12 @@
 import React from 'react';
-import CreateTaskForm from './components/createTaskForm/createTaskForm';
+import MutateTaskForm from '../../components/mutateTaskForm/mutateTaskForm';
 import TaskList from './components/taskList/TaskList';
 import './Home.css';
 
 function Home() {
   return (
     <div className="home">
-      <CreateTaskForm />
+      <MutateTaskForm headerTitle='Add a new Task' />
       <TaskList />
     </div>
   );
