@@ -49,6 +49,7 @@ function MutateTaskForm({headerTitle, textAreaHeight, isUpdate=false, task}: Tas
           }
         }
       });
+      cleanStates();
     }
   }
   const submitUpdate = () => {
