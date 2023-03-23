@@ -3,60 +3,21 @@ import EmptyList from './components/emptyList/EmptyList';
 import TaskItem from './components/taskItem/TaskItem';
 import './TaskList.css';
 
-const tasks = [
-  {
-    title: "Task Title goes Here",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies leo integer malesuada",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-  {
-    title: "Una tarea",
-    description: "Una descripcion",
-    status: "In Progress"
-  },
-]
-
 function TaskList() {
+  const tasks = [
+    {
+      id: 1,
+      title: "Task Title goes Here",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultricies leo integer malesuada",
+      status: "InProgress"
+    },
+    {
+      id: 2,
+      title: "Una tarea",
+      description: "Una descripcion",
+      status: "InProgress"
+    }
+  ];
   return (
       <div className='task-list'>
         <div className='list-header list-header-radius primary-bg-color primary-text'>
@@ -66,7 +27,7 @@ function TaskList() {
         </div>
         <div>
           <div className='list-body secondary-bg-color'>
-            {tasks.length > 0 ? (tasks.map((task) => (<TaskItem {...task} />))) : <EmptyList />}
+            {tasks.length > 0 ? (tasks.map((task) => (<TaskItem key={task.id} {...task} />))) : <EmptyList />}
           </div>
         </div>
       </div>

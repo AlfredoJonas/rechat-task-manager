@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from './Home';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
+import { App } from '../../App';
 
 test('Check render and simplest form behavior for adding a new task', async () => {
-  render(<Home />);
+  render(<App />);
   const addElements = screen.getAllByText(/Add/i);
   expect(addElements).toHaveLength(2);
 

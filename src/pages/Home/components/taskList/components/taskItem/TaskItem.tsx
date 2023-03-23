@@ -19,7 +19,7 @@ function TaskItem({title, description, status}: TaskItemInterface) {
         </div>
         <div className='bottom-item'>
           <div className='primary-text primary-bg-color label-bottom-item'>{status}</div>
-          <Link to="edit">
+          <Link to="/edit">
             <PenEdiPencilIcon />
           </Link>
         </div>
